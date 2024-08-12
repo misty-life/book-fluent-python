@@ -52,5 +52,3 @@ def spades_high(card):
 # 오름차순으로 카드 순위 나열
 for card in sorted(deck, key=spades_high):
     print(card)
-
-# p.42
