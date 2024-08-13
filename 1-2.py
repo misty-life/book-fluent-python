@@ -16,6 +16,9 @@ class Vector:
     def __abs__(self):
         return hypot(self.x, self.y)
     
+    # 기본적으로 사용자 정의 클래스의 객체는 True이다.
+    # __bool__() 메서드를 구현하지 않으면 __len__() 메서드에서 0을 반환하면 False, 그 외는 True로 간주한다.
+    # abs 연산이 없기 때문에 return bool(self.x or self.y) 를 이용하면 더 빠르다.
     def __bool__(self):
         return bool(abs(self))
     
@@ -28,4 +31,5 @@ class Vector:
         return Vector(self.x * scalar, self.y * scalar)
     
 
-# p. 48
+# len()은 빈번하게 발생되는 연산이기 때문에, 성능을 위해 CPython에서는 단순히 C 언어 구조체의 필드를 읽어온다.
+# 특별 메서드를 구현하면 사용자 정의 객체도 내장형 객체처럼 동작하게 되어 Pythonic한 코딩 스타일을 구사할 수 있게 된다.
